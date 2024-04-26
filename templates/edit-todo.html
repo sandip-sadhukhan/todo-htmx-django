@@ -1,0 +1,17 @@
+<li class="list-group-item">
+  <form
+    class="d-flex justify-content-between gap-3"
+    hx-post="{% url 'editTodo' todo.id %}"
+    hx-target="#todos"
+    hx-swap="outerHTML"
+  >
+    <input
+      name="text"
+      type="text"
+      class="form-control form-control-sm"
+      value="{{todo.text}}"
+    />
+
+    <button type="submit" class="btn btn-sm btn-info py-0">Save</button>
+  </form>
+</li>

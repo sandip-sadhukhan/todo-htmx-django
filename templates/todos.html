@@ -1,0 +1,30 @@
+<ul
+  class="list-group my-5"
+  id="todos"
+  hx-headers='{ "X-CSRFToken": "{{ csrf_token }}" }'
+>
+  {% for todo in todos %}
+  <li class="list-group-item d-flex justify-content-between" hx-target="this">
+    <span>{{todo.text}}</span>
+
+    <div class="d-flex gap-1">
+      <button
+        class="btn btn-sm btn-info py-0"
+        hx-get="{% url 'editTodo' todo.id %}"
+        hx-swap="outerHTML"
+      >
+        Edit
+      </button>
+
+      <button
+        hx-delete="{% url 'deleteTodo' todo.id %}"
+        hx-target="#todos"
+        hx-swap="outerHTML"
+        class="btn btn-sm btn-danger py-0"
+      >
+        Delete
+      </button>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
