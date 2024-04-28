@@ -24,7 +24,8 @@
             hx-post="/"
             hx-target="#todos"
             hx-swap="outerHTML"
-            hx-trigger="submit, input-clear"
+            hx-trigger="submit"
+            hx-on:htmx:after-on-load="document.getElementById('todoTextInput')"
           >
             <div class="d-flex gap-3">
               {% csrf_token %}
@@ -44,14 +45,5 @@
         </div>
       </div>
     </div>
-
-    <!-- vanila js -->
-    <script>
-      document.body.addEventListener("htmx:afterRequest", function (event) {
-        if (event.target.getAttribute("hx-trigger")?.includes("input-clear")) {
-          document.getElementById("todoTextInput").value = "";
-        }
-      });
-    </script>
   </body>
 </html>
