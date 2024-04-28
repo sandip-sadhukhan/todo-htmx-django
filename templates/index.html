@@ -25,7 +25,7 @@
             hx-target="#todos"
             hx-swap="outerHTML"
             hx-trigger="submit"
-            hx-on:htmx:after-on-load="document.getElementById('todoTextInput')"
+            hx-on:htmx:after-on-load="document.getElementById('todoTextInput').value = ''"
           >
             <div class="d-flex gap-3">
               {% csrf_token %}
